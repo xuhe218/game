@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>双人召唤战线 - 第二阶段试玩版</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <section id="screen-home" class="screen screen-home active" aria-label="首页">
+        <canvas id="home-bg-canvas" class="home-canvas" aria-hidden="true"></canvas>
+        <div class="home-content">
+          <p class="kicker">双人同屏 / 小游戏驱动 / 自动战斗</p>
+          <h1>双人召唤战线</h1>
+          <p class="home-copy">
+            下方接宝石积累召唤能量，上方召唤物自动推进。两名玩家共用一台电脑，合作守住能量核心。
+          </p>
+          <div class="home-actions">
+            <button class="primary-btn" data-nav="mode">开始游戏</button>
+            <button class="ghost-btn" data-nav="help">操作说明</button>
+            <button class="ghost-btn" data-nav="codex">召唤图鉴</button>
+          </div>
+        </div>
+        <div class="home-preview" aria-hidden="true">
+          <div class="preview-stage"></div>
+          <div class="preview-lane preview-lane-a"></div>
+          <div class="preview-lane preview-lane-b"></div>
+          <div class="preview-lane preview-lane-c"></div>
+          <div class="preview-orbit preview-orbit-a"></div>
+          <div class="preview-orbit preview-orbit-b"></div>
+          <div class="core-sigil"></div>
+          <div class="preview-crystal preview-crystal-a"></div>
+          <div class="preview-crystal preview-crystal-b"></div>
+          <div class="preview-crystal preview-crystal-c"></div>
+          <div class="preview-skill preview-skill-thunder"></div>
+          <div class="preview-skill preview-skill-shield"></div>
+          <div class="preview-unit preview-unit-a"></div>
+          <div class="preview-unit preview-unit-b"></div>
+          <div class="preview-unit preview-unit-c"></div>
+          <div class="preview-unit preview-unit-d"></div>
+          <div class="preview-unit preview-unit-e"></div>
+          <div class="preview-enemy preview-enemy-a"></div>
+          <div class="preview-enemy preview-enemy-b"></div>
+          <div class="preview-enemy preview-enemy-c"></div>
+        </div>
+      </section>
+
+      <section id="screen-mode" class="screen menu-screen" aria-label="模式选择">
+        <div class="menu-topline">
+          <button class="icon-btn" data-nav="home" aria-label="返回首页">←</button>
+          <span>模式选择</span>
+        </div>
+        <div class="menu-grid two-up">
+          <button class="mode-tile co-op-tile" data-nav="coop">
+            <span class="tile-mark">共</span>
+            <strong>合作模式</strong>
+            <small>两名玩家守护同一个基地，小游戏成绩会召唤作战单位。</small>
+          </button>
+          <button class="mode-tile pk-tile" data-nav="pk">
+            <span class="tile-mark">战</span>
+            <strong>PK 模式</strong>
+            <small>左右基地对攻，双方使用同一种小游戏，用表现换召唤与干扰。</small>
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-coop" class="screen menu-screen" aria-label="合作模式选择">
+        <div class="menu-topline">
+          <button class="icon-btn" data-nav="mode" aria-label="返回模式选择">←</button>
+          <span>合作模式选择</span>
+        </div>
+        <p class="menu-hint">先选择合作玩法，再为两名玩家分别配置小游戏。</p>
+        <div class="menu-grid">
+          <button class="mode-tile wide-tile" data-action="choose-coop-campaign">
+            <span class="tile-mark">Ⅰ</span>
+            <strong>合作闯关</strong>
+            <small>7 个普通关 + 1 个 Boss 关，地图、敌人组合和机制逐关变化。</small>
+          </button>
+          <button class="mode-tile wide-tile" data-action="choose-coop-infinite">
+            <span class="tile-mark">∞</span>
+            <strong>无限模式</strong>
+            <small>敌人持续增强，每 4 波出现精英组合，每 8 波出现混沌核心。</small>
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-coop-stage" class="screen menu-screen" aria-label="合作闯关关卡选择">
+        <div class="menu-topline">
+          <button class="icon-btn" data-nav="coop" aria-label="返回合作模式选择">←</button>
+          <span>关卡选择</span>
+        </div>
+        <p class="menu-hint">选择已解锁关卡。通关后会保存进度并解锁下一关。</p>
+        <div id="stage-grid" class="stage-grid"></div>
+        <div class="selection-summary">
+          <span>当前关卡</span>
+          <strong id="stage-summary">第 1 关：星光草原</strong>
+        </div>
+        <div class="home-actions">
+          <button class="primary-btn" data-action="confirm-stage">选择小游戏</button>
+          <button class="ghost-btn" data-nav="coop">返回合作模式</button>
+        </div>
+      </section>
+
+      <section id="screen-coop-mini" class="screen menu-screen" aria-label="合作小游戏选择">
+        <div class="menu-topline">
+          <button class="icon-btn" data-action="coop-mini-back" aria-label="返回上一步">←</button>
+          <span>合作小游戏选择</span>
+        </div>
+        <p class="menu-hint">合作模式允许两名玩家使用不同小游戏。确认后进入正式战斗。</p>
+        <div class="setup-panel">
+          <div class="setup-column">
+            <h2>玩家一小游戏</h2>
+            <div class="choice-row" data-choice-group="coop-p1-mini">
+              <button class="choice-chip selected" data-value="collector">接宝石</button>
+              <button class="choice-chip" data-value="rhythm">节奏点击</button>
+              <button class="choice-chip" data-value="runner">三线跑酷</button>
+            </div>
+            <p class="choice-note" id="coop-p1-mini-note">接宝石：A/D 移动，稳定获得金币和召唤能量。</p>
+          </div>
+          <div class="setup-column">
+            <h2>玩家二小游戏</h2>
+            <div class="choice-row" data-choice-group="coop-p2-mini">
+              <button class="choice-chip" data-value="collector">接宝石</button>
+              <button class="choice-chip selected" data-value="rhythm">节奏点击</button>
+              <button class="choice-chip" data-value="runner">三线跑酷</button>
+            </div>
+            <p class="choice-note" id="coop-p2-mini-note">节奏点击：四轨下落音符，命中越准特殊进度越快。</p>
+          </div>
+        </div>
+        <div class="selection-summary">
+          <span>合作玩法</span>
+          <strong id="coop-variant-summary">合作闯关</strong>
+          <span>配置</span>
+          <strong id="coop-mini-summary">P1 接宝石 / P2 节奏点击</strong>
+        </div>
+        <div class="home-actions">
+          <button class="primary-btn" data-action="start-coop-selected">开始游戏</button>
+          <button class="ghost-btn" data-nav="coop">重新选择玩法</button>
+        </div>
+      </section>
+
+      <section id="screen-pk" class="screen menu-screen" aria-label="PK 模式选择">
+        <div class="menu-topline">
+          <button class="icon-btn" data-nav="mode" aria-label="返回模式选择">←</button>
+          <span>PK 设置</span>
+        </div>
+        <p class="menu-hint">双方必须使用同一种小游戏；每名玩家从同一技能池中选择 2 个技能。</p>
+        <div class="setup-panel single">
+          <div class="setup-column">
+            <h2>双方共同小游戏</h2>
+            <div class="choice-row" data-choice-group="pk-mini">
+              <button class="choice-chip selected" data-value="collector">接宝石</button>
+              <button class="choice-chip" data-value="rhythm">节奏点击</button>
+              <button class="choice-chip" data-value="runner">三线跑酷</button>
+            </div>
+            <p class="choice-note" id="pk-mini-note">接宝石：左右移动收集宝石，注意假宝石和炸弹。</p>
+          </div>
+        </div>
+        <div class="skill-select-layout">
+          <section class="skill-select-panel">
+            <h2>玩家一技能</h2>
+            <p>选择 2 个，游戏内使用 J / K。</p>
+            <div id="pk-p1-skills" class="skill-card-grid"></div>
+          </section>
+          <section class="skill-select-panel">
+            <h2>玩家二技能</h2>
+            <p>选择 2 个，游戏内使用 1 / 2。</p>
+            <div id="pk-p2-skills" class="skill-card-grid"></div>
+          </section>
+        </div>
+        <div class="selection-summary">
+          <span>共同小游戏</span>
+          <strong id="pk-mini-summary">接宝石</strong>
+          <span>技能配置</span>
+          <strong id="pk-skill-summary">P1 雷霆轰击 + 能量护盾 / P2 时间减速 + 机械空投</strong>
+        </div>
+        <div class="home-actions">
+          <button class="primary-btn" data-action="start-pk">开始游戏</button>
+          <button class="ghost-btn" data-action="show-soon">2v2 扩展</button>
+        </div>
+      </section>
+
+      <section id="screen-help" class="screen info-screen" aria-label="操作说明">
+        <div class="menu-topline">
+          <button class="icon-btn" data-action="help-back" aria-label="返回">←</button>
+          <span>操作说明</span>
+        </div>
+        <div class="info-layout">
+          <article class="info-panel">
+            <h2>基础操作</h2>
+            <dl class="key-list">
+              <div><dt>接宝石</dt><dd>P1：A/D，P2：←/→</dd></div>
+              <div><dt>节奏点击</dt><dd>P1：W/A/S/D，P2：↑/←/↓/→</dd></div>
+              <div><dt>三线跑酷</dt><dd>P1：A/D，P2：←/→</dd></div>
+              <div><dt>玩家一技能</dt><dd>J / K，PK 中由玩家一自选</dd></div>
+              <div><dt>玩家二技能</dt><dd>1 / 2，PK 中由玩家二自选</dd></div>
+              <div><dt>暂停面板</dt><dd>Esc / Tab</dd></div>
+            </dl>
+          </article>
+          <article class="info-panel">
+            <h2>核心规则</h2>
+            <p>三种小游戏都会产出金币、召唤能量、连击和特殊召唤进度。</p>
+            <p>召唤能量满后会自动召唤单位；特殊进度和高连击会解锁更强召唤物。</p>
+            <p>合作模式保护同一个核心；PK 模式左右基地互攻，限时结束后比较血量。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="screen-codex" class="screen info-screen" aria-label="召唤图鉴">
+        <div class="menu-topline">
+          <button class="icon-btn" data-action="codex-back" aria-label="返回">←</button>
+          <span>召唤图鉴</span>
+        </div>
+        <div id="codex-grid" class="codex-grid"></div>
+      </section>
+
+      <section id="screen-game" class="screen game-screen" aria-label="游戏主界面">
+        <div class="battle-area">
+          <canvas id="battle-canvas" aria-label="自动战斗主战场"></canvas>
+          <div class="battle-status">
+            <div>
+              <span>基地</span>
+              <strong id="base-hp-text">100%</strong>
+            </div>
+            <div class="hp-track"><span id="base-hp-bar"></span></div>
+            <div>
+              <span>护盾</span>
+              <strong id="base-shield-text">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="lower-area">
+          <section class="player-panel player-one-panel">
+            <header>
+              <span>玩家一</span>
+              <small id="p1-mini-label">接宝石</small>
+              <strong id="p1-control-label">A / D</strong>
+            </header>
+            <canvas id="mini-p1" aria-label="玩家一接宝石小游戏"></canvas>
+            <div class="player-stats">
+              <div><span>召唤能量</span><strong id="p1-energy-text">0%</strong></div>
+              <div class="energy-track"><span id="p1-energy-bar"></span></div>
+              <div><span>特殊进度</span><strong id="p1-special-text">0%</strong></div>
+              <div class="special-track"><span id="p1-special-bar"></span></div>
+              <div><span>连击</span><strong id="p1-combo-text">0</strong></div>
+            </div>
+          </section>
+
+          <section class="tactical-hub">
+            <div class="tactical-section tactical-top">
+              <div class="hub-header">
+                <div>
+                  <span>当前模式</span>
+                  <strong id="mode-text">合作闯关</strong>
+                </div>
+                <button class="icon-btn small" data-action="pause" aria-label="暂停">Ⅱ</button>
+              </div>
+              <div class="hub-actions">
+                <button class="ghost-btn compact" data-nav="codex">图鉴</button>
+                <button class="ghost-btn compact" data-nav="help">帮助</button>
+              </div>
+            </div>
+
+            <div class="tactical-section tactical-resources">
+              <div class="stat-row">
+                <div><span>金币</span><strong id="coin-text">80</strong></div>
+                <div><span>关卡/波次</span><strong id="wave-text">1 / 6</strong></div>
+                <div><span>击败</span><strong id="kill-text">0</strong></div>
+              </div>
+              <div id="base-detail" class="base-detail">
+                <div><span>战斗计时</span><strong id="team-base-text">100%</strong></div>
+                <div><span>左侧基地</span><strong id="p1-base-text">100%</strong></div>
+                <div><span>右侧基地</span><strong id="p2-base-text">100%</strong></div>
+              </div>
+            </div>
+
+            <div class="tactical-section tactical-skills">
+              <div class="section-title">技能栏</div>
+              <div class="skill-grid">
+                <button class="skill-slot" data-skill="p1Skill1"><span>J</span><strong>雷霆轰击</strong><small>36 金币</small></button>
+                <button class="skill-slot" data-skill="p1Skill2"><span>K</span><strong>能量护盾</strong><small>30 金币</small></button>
+                <button class="skill-slot" data-skill="p2Skill1"><span>1</span><strong>时间减速</strong><small>34 金币</small></button>
+                <button class="skill-slot" data-skill="p2Skill2"><span>2</span><strong>机械空投</strong><small>42 金币</small></button>
+              </div>
+            </div>
+
+            <div class="tactical-section tactical-summons">
+              <div class="section-title">召唤队列</div>
+              <div class="summon-progress">
+                <div>
+                  <span>玩家一召唤</span>
+                  <strong id="p1-summon-label">史莱姆机兵</strong>
+                </div>
+                <div>
+                  <span>玩家二召唤</span>
+                  <strong id="p2-summon-label">史莱姆机兵</strong>
+                </div>
+              </div>
+              <div id="income-hint" class="income-hint">小游戏收益：宝石、节奏完美、跑酷能量环都会推进召唤。</div>
+              <div id="summon-board" class="summon-board"></div>
+            </div>
+
+          </section>
+
+          <section class="player-panel player-two-panel">
+            <header>
+              <span>玩家二</span>
+              <small id="p2-mini-label">节奏</small>
+              <strong id="p2-control-label">← / →</strong>
+            </header>
+            <canvas id="mini-p2" aria-label="玩家二接宝石小游戏"></canvas>
+            <div class="player-stats">
+              <div><span>召唤能量</span><strong id="p2-energy-text">0%</strong></div>
+              <div class="energy-track"><span id="p2-energy-bar"></span></div>
+              <div><span>特殊进度</span><strong id="p2-special-text">0%</strong></div>
+              <div class="special-track"><span id="p2-special-bar"></span></div>
+              <div><span>连击</span><strong id="p2-combo-text">0</strong></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="screen-result" class="screen result-screen" aria-label="结算界面">
+        <div class="result-box">
+          <p class="kicker">结算</p>
+          <h1 id="result-title">战斗结束</h1>
+          <div id="result-stats" class="result-stats"></div>
+          <div class="home-actions">
+            <button id="result-next-btn" class="primary-btn hidden" data-action="next-stage">下一关</button>
+            <button id="result-restart-btn" class="primary-btn" data-action="restart">重新开始</button>
+            <button id="result-stage-btn" class="ghost-btn hidden" data-action="back-stage-select">返回关卡选择</button>
+            <button class="ghost-btn" data-nav="home">返回首页</button>
+          </div>
+        </div>
+      </section>
+
+      <div id="pause-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="暂停控制面板">
+        <div class="pause-panel">
+          <p class="kicker">控制面板</p>
+          <h2>游戏已暂停</h2>
+          <div class="pause-actions">
+            <button class="primary-btn" data-action="resume">继续游戏</button>
+            <button class="ghost-btn" data-action="restart">重新开始</button>
+            <button class="ghost-btn" data-nav="help">操作说明</button>
+            <button class="ghost-btn" data-action="toggle-sound">音量：开</button>
+            <button class="ghost-btn danger" data-nav="home">返回首页</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    </div>
+
+    <script src="js/config.js" defer></script>
+    <script src="js/input.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/minigame.js" defer></script>
+    <script src="js/battlefield.js" defer></script>
+    <script src="js/game.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>
