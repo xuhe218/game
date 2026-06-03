@@ -1,0 +1,14 @@
+- region "合作模式选择" [ref=e32]:
+  - generic [ref=e33]:
+    - button "返回模式选择" [ref=e34] [cursor=pointer]: ←
+    - generic [ref=e35]: 合作模式选择
+  - paragraph [ref=e36]: 先选择合作玩法，再为两名玩家分别配置小游戏。
+  - generic [ref=e37]:
+    - button "Ⅰ 合作闯关 7 个普通关 + 1 个 Boss 关，地图、敌人组合和机制逐关变化。" [ref=e38]:
+      - generic [ref=e39]: Ⅰ
+      - strong [ref=e40]: 合作闯关
+      - generic [ref=e41]: 7 个普通关 + 1 个 Boss 关，地图、敌人组合和机制逐关变化。
+    - button "∞ 无限模式 敌人持续增强，每 4 波出现精英组合，每 8 波出现混沌核心。" [ref=e42]:
+      - generic [ref=e43]: ∞
+      - strong [ref=e44]: 无限模式
+      - generic [ref=e45]: 敌人持续增强，每 4 波出现精英组合，每 8 波出现混沌核心。

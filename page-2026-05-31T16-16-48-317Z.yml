@@ -1,0 +1,28 @@
+- region "合作小游戏选择" [ref=e106]:
+  - generic [ref=e107]:
+    - button "返回上一步" [ref=e108] [cursor=pointer]: ←
+    - generic [ref=e109]: 合作小游戏选择
+  - paragraph [ref=e110]: 合作模式允许两名玩家使用不同小游戏。确认后进入正式战斗。
+  - generic [ref=e111]:
+    - generic [ref=e112]:
+      - heading "玩家一小游戏" [level=2] [ref=e113]
+      - generic [ref=e114]:
+        - button "接宝石" [ref=e115] [cursor=pointer]
+        - button "节奏点击" [ref=e116] [cursor=pointer]
+        - button "三线跑酷" [ref=e117] [cursor=pointer]
+      - paragraph [ref=e118]: 接宝石：A/D 移动，接宝石，避开炸弹和假宝石。
+    - generic [ref=e119]:
+      - heading "玩家二小游戏" [level=2] [ref=e120]
+      - generic [ref=e121]:
+        - button "接宝石" [ref=e122] [cursor=pointer]
+        - button "节奏点击" [ref=e123] [cursor=pointer]
+        - button "三线跑酷" [ref=e124] [cursor=pointer]
+      - paragraph [ref=e125]: 节奏点击：四轨下落音符，使用 ↑/←/↓/→ 判定。
+  - generic [ref=e126]:
+    - generic [ref=e127]: 合作玩法
+    - strong [ref=e128]: 合作闯关
+    - generic [ref=e129]: 配置
+    - strong [ref=e130]: 第1关 · P1 接宝石 / P2 节奏
+  - generic [ref=e131]:
+    - button "开始游戏" [ref=e132] [cursor=pointer]
+    - button "重新选择玩法" [ref=e133] [cursor=pointer]

@@ -1,0 +1,69 @@
+- region "PK 模式选择" [ref=e32]:
+  - generic [ref=e33]:
+    - button "返回模式选择" [ref=e34] [cursor=pointer]: ←
+    - generic [ref=e35]: PK 设置
+  - paragraph [ref=e36]: 双方必须使用同一种小游戏；每名玩家从同一技能池中选择 2 个技能。
+  - generic [ref=e38]:
+    - heading "双方共同小游戏" [level=2] [ref=e39]
+    - generic [ref=e40]:
+      - button "接宝石" [ref=e41] [cursor=pointer]
+      - button "节奏点击" [ref=e42] [cursor=pointer]
+      - button "三线跑酷" [ref=e43] [cursor=pointer]
+    - paragraph [ref=e44]: 接宝石：A/D 移动，接宝石，避开炸弹和假宝石。
+  - generic [ref=e45]:
+    - generic [ref=e46]:
+      - heading "玩家一技能" [level=2] [ref=e47]
+      - paragraph [ref=e48]: 选择 2 个，游戏内使用 J / K。
+      - generic [ref=e49]:
+        - button "已选择 雷霆轰击 对敌方密集区域造成范围雷电伤害。 36 金币 / 8s" [ref=e50] [cursor=pointer]:
+          - generic [ref=e52]: 已选择
+          - strong [ref=e53]: 雷霆轰击
+          - generic [ref=e54]: 对敌方密集区域造成范围雷电伤害。
+          - emphasis [ref=e55]: 36 金币 / 8s
+        - button "已选择 能量护盾 为己方核心、基地或友方阵线提供短时护盾。 30 金币 / 12s" [ref=e56] [cursor=pointer]:
+          - generic [ref=e58]: 已选择
+          - strong [ref=e59]: 能量护盾
+          - generic [ref=e60]: 为己方核心、基地或友方阵线提供短时护盾。
+          - emphasis [ref=e61]: 30 金币 / 12s
+        - button "可选择 时间减速 短时间减速所有敌对单位，给召唤物争取输出时间。 34 金币 / 10s" [ref=e62] [cursor=pointer]:
+          - generic [ref=e64]: 可选择
+          - strong [ref=e65]: 时间减速
+          - generic [ref=e66]: 短时间减速所有敌对单位，给召唤物争取输出时间。
+          - emphasis [ref=e67]: 34 金币 / 10s
+        - button "可选择 机械空投 立刻空投一组临时机械兵压线推进。 42 金币 / 14s" [ref=e68] [cursor=pointer]:
+          - generic [ref=e70]: 可选择
+          - strong [ref=e71]: 机械空投
+          - generic [ref=e72]: 立刻空投一组临时机械兵压线推进。
+          - emphasis [ref=e73]: 42 金币 / 14s
+    - generic [ref=e74]:
+      - heading "玩家二技能" [level=2] [ref=e75]
+      - paragraph [ref=e76]: 选择 2 个，游戏内使用 1 / 2。
+      - generic [ref=e77]:
+        - button "可选择 雷霆轰击 对敌方密集区域造成范围雷电伤害。 36 金币 / 8s" [ref=e78] [cursor=pointer]:
+          - generic [ref=e80]: 可选择
+          - strong [ref=e81]: 雷霆轰击
+          - generic [ref=e82]: 对敌方密集区域造成范围雷电伤害。
+          - emphasis [ref=e83]: 36 金币 / 8s
+        - button "可选择 能量护盾 为己方核心、基地或友方阵线提供短时护盾。 30 金币 / 12s" [ref=e84] [cursor=pointer]:
+          - generic [ref=e86]: 可选择
+          - strong [ref=e87]: 能量护盾
+          - generic [ref=e88]: 为己方核心、基地或友方阵线提供短时护盾。
+          - emphasis [ref=e89]: 30 金币 / 12s
+        - button "已选择 时间减速 短时间减速所有敌对单位，给召唤物争取输出时间。 34 金币 / 10s" [ref=e90] [cursor=pointer]:
+          - generic [ref=e92]: 已选择
+          - strong [ref=e93]: 时间减速
+          - generic [ref=e94]: 短时间减速所有敌对单位，给召唤物争取输出时间。
+          - emphasis [ref=e95]: 34 金币 / 10s
+        - button "已选择 机械空投 立刻空投一组临时机械兵压线推进。 42 金币 / 14s" [ref=e96] [cursor=pointer]:
+          - generic [ref=e98]: 已选择
+          - strong [ref=e99]: 机械空投
+          - generic [ref=e100]: 立刻空投一组临时机械兵压线推进。
+          - emphasis [ref=e101]: 42 金币 / 14s
+  - generic [ref=e102]:
+    - generic [ref=e103]: 共同小游戏
+    - strong [ref=e104]: 接宝石
+    - generic [ref=e105]: 技能配置
+    - strong [ref=e106]: P1 雷霆轰击 + 能量护盾 / P2 时间减速 + 机械空投
+  - generic [ref=e107]:
+    - button "开始游戏" [ref=e108] [cursor=pointer]
+    - button "2v2 扩展" [ref=e109] [cursor=pointer]

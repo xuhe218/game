@@ -1,0 +1,9 @@
+- region "首页" [ref=e3]:
+  - generic [ref=e5]:
+    - paragraph [ref=e6]: 双人同屏 / 小游戏驱动 / 自动战斗
+    - heading "双人召唤战线" [level=1] [ref=e7]
+    - paragraph [ref=e8]: 下方接宝石积累召唤能量，上方召唤物自动推进。两名玩家共用一台电脑，合作守住能量核心。
+    - generic [ref=e9]:
+      - button "开始游戏" [ref=e10] [cursor=pointer]
+      - button "操作说明" [ref=e11] [cursor=pointer]
+      - button "召唤图鉴" [ref=e12] [cursor=pointer]

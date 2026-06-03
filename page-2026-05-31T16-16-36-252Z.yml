@@ -1,0 +1,52 @@
+- region "合作闯关关卡选择" [ref=e46]:
+  - generic [ref=e47]:
+    - button "返回合作模式选择" [ref=e48] [cursor=pointer]: ←
+    - generic [ref=e49]: 关卡选择
+  - paragraph [ref=e50]: 选择已解锁关卡。通关后会保存进度并解锁下一关。
+  - generic [ref=e51]:
+    - button "已解锁 第 1 关：星光草原 教学关 · 难度 1 小史莱姆 / 哥布林快跑者" [ref=e52] [cursor=pointer]:
+      - generic [ref=e54]: 已解锁
+      - strong [ref=e55]: 第 1 关：星光草原
+      - generic [ref=e56]: 教学关 · 难度 1
+      - emphasis [ref=e57]: 小史莱姆 / 哥布林快跑者
+    - button "未解锁 第 2 关：古树前线 快攻压线 · 难度 2 哥布林快跑者 / 小史莱姆" [disabled] [ref=e58]:
+      - generic [ref=e60]: 未解锁
+      - strong [ref=e61]: 第 2 关：古树前线
+      - generic [ref=e62]: 快攻压线 · 难度 2
+      - emphasis [ref=e63]: 哥布林快跑者 / 小史莱姆
+    - button "未解锁 第 3 关：机械矿洞 重甲防线 · 难度 3 机械盾兵 / 小史莱姆 / 爆炸虫 / 哥布林快跑者" [disabled] [ref=e64]:
+      - generic [ref=e66]: 未解锁
+      - strong [ref=e67]: 第 3 关：机械矿洞
+      - generic [ref=e68]: 重甲防线 · 难度 3
+      - emphasis [ref=e69]: 机械盾兵 / 小史莱姆 / 爆炸虫 / 哥布林快跑者
+    - button "未解锁 第 4 关：熔岩工厂 爆炸虫群 · 难度 4 爆炸虫 / 小史莱姆 / 哥布林快跑者 / 机械盾兵" [disabled] [ref=e70]:
+      - generic [ref=e72]: 未解锁
+      - strong [ref=e73]: 第 4 关：熔岩工厂
+      - generic [ref=e74]: 爆炸虫群 · 难度 4
+      - emphasis [ref=e75]: 爆炸虫 / 小史莱姆 / 哥布林快跑者 / 机械盾兵
+    - button "未解锁 第 5 关：冰霜遗迹 减速压制 · 难度 5 飞行眼球 / 小史莱姆 / 哥布林快跑者 / 冰霜法师" [disabled] [ref=e76]:
+      - generic [ref=e78]: 未解锁
+      - strong [ref=e79]: 第 5 关：冰霜遗迹
+      - generic [ref=e80]: 减速压制 · 难度 5
+      - emphasis [ref=e81]: 飞行眼球 / 小史莱姆 / 哥布林快跑者 / 冰霜法师
+    - button "未解锁 第 6 关：浮空回廊 空中威胁 · 难度 6 飞行眼球 / 哥布林快跑者 / 冰霜法师 / 小史莱姆" [disabled] [ref=e82]:
+      - generic [ref=e84]: 未解锁
+      - strong [ref=e85]: 第 6 关：浮空回廊
+      - generic [ref=e86]: 空中威胁 · 难度 6
+      - emphasis [ref=e87]: 飞行眼球 / 哥布林快跑者 / 冰霜法师 / 小史莱姆
+    - button "未解锁 第 7 关：虚空祭坛 治疗强化 · 难度 7 虚空祭司 / 小史莱姆 / 哥布林快跑者 / 机械盾兵" [disabled] [ref=e88]:
+      - generic [ref=e90]: 未解锁
+      - strong [ref=e91]: 第 7 关：虚空祭坛
+      - generic [ref=e92]: 治疗强化 · 难度 7
+      - emphasis [ref=e93]: 虚空祭司 / 小史莱姆 / 哥布林快跑者 / 机械盾兵
+    - button "未解锁 第 8 关：虚空核心 Boss 关 · 难度 8 机械盾兵 / 冰霜法师 / 虚空祭司 / 飞行眼球" [disabled] [ref=e94]:
+      - generic [ref=e96]: 未解锁
+      - strong [ref=e97]: 第 8 关：虚空核心
+      - generic [ref=e98]: Boss 关 · 难度 8
+      - emphasis [ref=e99]: 机械盾兵 / 冰霜法师 / 虚空祭司 / 飞行眼球
+  - generic [ref=e100]:
+    - generic [ref=e101]: 当前关卡
+    - strong [ref=e102]: 第 1 关：星光草原
+  - generic [ref=e103]:
+    - button "选择小游戏" [ref=e104] [cursor=pointer]
+    - button "返回合作模式" [ref=e105] [cursor=pointer]

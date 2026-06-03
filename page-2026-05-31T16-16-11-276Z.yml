@@ -1,0 +1,13 @@
+- region "模式选择" [ref=e19]:
+  - generic [ref=e20]:
+    - button "返回首页" [ref=e21] [cursor=pointer]: ←
+    - generic [ref=e22]: 模式选择
+  - generic [ref=e23]:
+    - button "共 合作模式 两名玩家守护同一个基地，小游戏成绩会召唤作战单位。" [ref=e24]:
+      - generic [ref=e25]: 共
+      - strong [ref=e26]: 合作模式
+      - generic [ref=e27]: 两名玩家守护同一个基地，小游戏成绩会召唤作战单位。
+    - button "战 PK 模式 左右基地对攻，双方使用同一种小游戏，用表现换召唤与干扰。" [ref=e28]:
+      - generic [ref=e29]: 战
+      - strong [ref=e30]: PK 模式
+      - generic [ref=e31]: 左右基地对攻，双方使用同一种小游戏，用表现换召唤与干扰。
